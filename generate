@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -e -o pipefail
+
+dir="2022/$(printf day%02d $1)"
+
+mkdir "$dir"
+touch "$dir/input.txt"
+cat > "$dir/main.go" <<-EOF
+package main
+
+import (
+    _ "embed"
+)
+
+//go:embed input.txt
+var input string
+
+func main() {
+
+}
+EOF
